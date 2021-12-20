@@ -3,9 +3,8 @@
 # Licensed under the Raphielscape Public License, Version 1.c (the "License");
 # you may not use this file except in compliance with the License.
 #
-# Recode by @mrismanaziz
-# FROM Man-Userbot <https://github.com/mrismanaziz/Man-Userbot>
-# t.me/SharingUserbot & t.me/Lunatic0de
+# Recode by @dickgans
+# FROM Man-Userbot <https://github.com/ksa339189/Man-Userbot>
 #
 """ Modul Userbot untuk menghapus pesan yang tidak dibutuhkan (chat spam atau lainnya)."""
 
@@ -28,7 +27,7 @@ async def fastpurger(purg):
     itermsg = purg.client.iter_messages(chat, min_id=purg.reply_to_msg_id)
     count = 0
     if purg.reply_to_msg_id is None:
-        return await edit_delete(purg, "**Mohon Balas Ke Pesan**")
+        return await edit_delete(purg, "**Please Reply to Chat**")
     async for msg in itermsg:
         msgs.append(msg)
         count += 1
@@ -77,7 +76,7 @@ async def delete_it(delme):
             await msg_src.delete()
             await delme.delete()
         except rpcbaseerrors.BadRequestError:
-            await delme.edit("**Tidak Bisa Menghapus Pesan**")
+            await delme.edit("**Can't Clear Chat**")
 
 
 @man_cmd(pattern="edit")
@@ -119,7 +118,7 @@ async def purgfromto(prgnew):
         elif prgnew.pattern_match.group(2) == "to":
             await purgto(prgnew)
     else:
-        await edit_delete(prgnew, "**Mohon Balas Ke Pesan untuk mulai menghapus**")
+        await edit_delete(prgnew, "**Please Reply to Chat**")
 
 
 async def purgfrm(purgdari):
@@ -161,7 +160,7 @@ async def purgto(purgke):
             await purgke.delete()
         man = await edit_delete(
             purgke,
-            f"**Fast purge complete!**\n**Berhasil Menghapus** `{message}` **Pesan**",
+            f"**Fast purge complete!**\n**Successfully Deleted** `{message}` **Chat**",
             5,
         )
     except Exception as er:
@@ -170,9 +169,9 @@ async def purgto(purgke):
 
 CMD_HELP.update(
     {
-        "purge": f"**Plugin : **`Menghapus Kenangan Chat`\
+        "purge": f"**Plugin : **`Clear History`\
         \n\n  •  **Syntax :** `{cmd}purge`\
-        \n  •  **Function : **Menghapus semua pesan mulai dari pesan yang dibalas.\
+        \n  •  **Function : **Clear All Chat**.\
         \n\n  •  **Syntax :** `{cmd}purgefrom` atau `{cmd}pfrom`\
         \n  •  **Function : **Menandai awal dari mana harus dihapus.\
         \n\n  •  **Syntax :** `{cmd}purgeto` atau `{cmd}pto`\
