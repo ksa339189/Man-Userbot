@@ -35,6 +35,7 @@ htmlwebshot
 httplib2
 humanize 
 jikanpy
+json
 js2py
 justwatch
 lottie
@@ -81,6 +82,8 @@ telethon
 telethon-session-sqlalchemy
 telethon-tgcrypto
 urbandict
+urllib3
+uuid
 validators
 vcsi
 wand
